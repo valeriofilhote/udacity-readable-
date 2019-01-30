@@ -1,0 +1,15 @@
+.NavItem{
+    display: inline-flex;
+    height: 100%;
+    align-items: center;
+    padding: 5px 15px;
+    font-weight: 500;
+}
+.NavItem .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.NavItem div:nth-child(2){
+    margin-left: 10px;
+}
