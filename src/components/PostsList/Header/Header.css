@@ -1,0 +1,27 @@
+
+.Header div.controls__container{
+    border-radius: 10px;
+    background-color: white;
+    width: 210px;
+    padding: 9px 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Header label {
+    font-size: 14px;
+    color: #75CBFF;
+}
+.Header input {
+    background-color: transparent !important;
+    border: 1px solid  #75CBFF;
+    position: static;
+}
+.Header .selectedCategory{
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 1rem;
+    color: #1DA1F2;
+    display: inline-block;
+    margin-left: 10px;
+}

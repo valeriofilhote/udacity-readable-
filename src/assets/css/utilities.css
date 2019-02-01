@@ -1,0 +1,49 @@
+/* Alignment */
+.text-center {
+    text-align: center;
+}
+.text-center {
+    text-align: center;
+}
+.justify-between{
+    justify-content: space-between;
+}
+.justify-center{
+    justify-content: center;
+}
+.align-item-center{
+    align-items: center
+}
+/* Display */
+.d-inline-block{
+    display: inline-block;
+}
+.d-flex{
+    display: flex;
+}
+/* Font */
+.font-bold{
+    font-weight: 600;
+}
+/* Margin */
+.m-0{
+    margin: 0;
+}
+.m-b-1{
+    margin-bottom: 1rem;
+}
+.m-l-1{
+    margin-left: 1rem;
+}
+/* Padding */
+.p-y-1 {
+    padding: 1rem 0;
+}
+.p-x-1 {
+    padding: 0 1rem;
+}
+
+/* Position */
+.pos-relative{
+    position: relative;
+}

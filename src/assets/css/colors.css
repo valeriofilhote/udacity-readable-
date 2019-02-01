@@ -1,0 +1,15 @@
+/* Font */
+.font-color-white {
+    color: white;
+}
+.font-color-primary {
+    color: #1DA1F2;
+}
+
+/* background-color */
+.bck-color-primary{
+    background-color: #1DA1F2
+}
+.bck-color-primary-light{
+    background-color: #E8F5FD
+}
