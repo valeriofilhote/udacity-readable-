@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 
 // Temp
-import PostsList from '../../components/PostsList/PostsList'
+import Comment from '../../components/Comment/Comment'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <PostsList />
+        <Comment />
       </div>
     );
   }

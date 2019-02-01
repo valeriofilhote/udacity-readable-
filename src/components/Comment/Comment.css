@@ -1,0 +1,14 @@
+.Comment{
+    border: 1px solid #B0DAF3;
+    background-color: #f1f9fe;
+    padding: 0 20px;
+}
+.Comment p {
+    text-align: justify;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+.Comment span {
+    font-size: 12px;
+    font-weight: 600;
+}

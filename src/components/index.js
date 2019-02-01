@@ -6,6 +6,7 @@ import Post from './Post/Post'
 import CommentCounter from './CommentCounter/CommentCounter'
 import VoteCounter from './VoteCounter/VoteCounter'
 import EditDeleteBtns from './EditDeleteBtns/EditDeleteBtns'
+import Comment from './Comment/Comment'
 
 export {
     Button,
@@ -16,5 +17,6 @@ export {
     CommentCounter,
     VoteCounter,
     EditDeleteBtns,
+    Comment,
 
 }
