@@ -12,6 +12,7 @@ import InputText from './InputText/InputText'
 import InputLabel from './InputLabel/InputLabel'
 import TextArea from './TextArea/TextArea'
 import Select from './Select/Select'
+import Backdrop from './Backdrop/Backdrop'
 
 export {
     Button,
@@ -28,4 +29,5 @@ export {
     InputLabel,
     TextArea,
     Select,
+    Backdrop
 }
