@@ -1,0 +1,11 @@
+.PostsList{
+    background-color: white;
+}
+.PostsList main ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.PostsList main ul li{
+    border-bottom: 1px solid #f4f4f4;
+}

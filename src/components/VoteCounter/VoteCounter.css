@@ -1,0 +1,24 @@
+.VoteCounter{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.VoteCounter label{
+    display: inline-block;
+    color: #1DA1F2;
+    font-size: 12px;
+}
+.thumb__container{
+    height: 40px;
+    padding: 0 10px;
+}
+.thumb__container:hover{
+    background-color: #f4f4f4;
+    cursor: pointer;
+}
+.thumb-down {
+    margin-top: 15px;
+}
+.thumb-up {
+    margin-top: 8px;
+}

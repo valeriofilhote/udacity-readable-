@@ -19,7 +19,7 @@ export default class Header extends React.Component {
                 style={{ height: 28, padding: '11px 20px' }}>
                 <div className="controls__container">
                     <div className="d-inline-block">
-                        <label htmlFor="byDate">
+                        <label className="sortedByLabel" htmlFor="byDate">
                             <input
                                 id="byDate"
                                 type="radio"
@@ -31,7 +31,7 @@ export default class Header extends React.Component {
                         </label>
                     </div>
                     <div className="d-inline-block m-l-1">
-                        <label htmlFor="byVoteScore">
+                        <label className="sortedByLabel" htmlFor="byVoteScore">
                             <input
                                 id="byVoteScore"
                                 type="radio"

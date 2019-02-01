@@ -1,0 +1,11 @@
+.CommentCounter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.CommentCounter label {
+    color: #1DA1F2;
+    font-size: 12px;
+    display: inline-block;
+    margin-left: 5px;
+}

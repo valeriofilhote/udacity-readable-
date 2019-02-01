@@ -12,6 +12,10 @@
     font-size: 14px;
     color: #75CBFF;
 }
+.Header .sortedByLabel:hover{
+    color: #1DA1F2;
+    cursor: pointer;
+}
 .Header input {
     background-color: transparent !important;
     border: 1px solid  #75CBFF;

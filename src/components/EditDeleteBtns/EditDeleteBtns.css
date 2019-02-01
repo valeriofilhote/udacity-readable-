@@ -1,0 +1,21 @@
+.EditDeleteBtns{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.EditDeleteBtns label{
+    display: inline-block;
+    color: #1DA1F2;
+    font-size: 12px;
+}
+.btns__container{
+    height: 40px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btns__container:hover{
+    background-color: #f4f4f4;
+    cursor: pointer;
+}

@@ -1,0 +1,34 @@
+.Post{
+    padding: 10px 20px;
+}
+.Post__wrapper{
+    display: flex;
+}
+.Post .info-side{
+    flex: 1;
+}
+.info-side__wrapper:hover{
+    background-color: #f4f4f4;
+    cursor: pointer;
+}
+.info-side span {
+    font-size: 12px;
+    font-weight: 600;
+}
+.info-side h5 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+}
+.Post p {
+    text-align: justify;
+    font-size: 14px;
+}
+
+
+.Post .control-side{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
