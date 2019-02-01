@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 import './App.css';
 
 // Temp
-import Comment from '../../components/Comment/Comment'
+import PostForm from '../PostForm/PostForm'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Comment />
+        {/* Temp */}
+        <div className="temp__container">
+          <div className="m-t-1">
+            <PostForm />
+          </div>
+        </div>
       </div>
     );
   }

@@ -7,6 +7,11 @@ import CommentCounter from './CommentCounter/CommentCounter'
 import VoteCounter from './VoteCounter/VoteCounter'
 import EditDeleteBtns from './EditDeleteBtns/EditDeleteBtns'
 import Comment from './Comment/Comment'
+import FormCard from './FormCard/FormCard'
+import InputText from './InputText/InputText'
+import InputLabel from './InputLabel/InputLabel'
+import TextArea from './TextArea/TextArea'
+import Select from './Select/Select'
 
 export {
     Button,
@@ -18,5 +23,9 @@ export {
     VoteCounter,
     EditDeleteBtns,
     Comment,
-
+    FormCard,
+    InputText,
+    InputLabel,
+    TextArea,
+    Select,
 }

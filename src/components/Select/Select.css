@@ -1,0 +1,12 @@
+.Select{
+
+}
+.Select select{
+    margin-top: 5px;
+    width: 100%;
+    border: 1px solid #E6ECF0;
+    padding: 8px 0;
+    border-radius: 5px;
+    /* color: #1DA1F2; */
+    font-weight: 600;
+}
