@@ -5,6 +5,7 @@ import './App.css';
 import { NavBar } from '../../components'
 import Default from '../Default/Default'
 import PostDetail from '../PostDetail/PostDetail'
+import PostForm from '../PostForm/PostForm'
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
             <div className="container" style={{ paddingTop: 85 }}>
               <Route path="/" exact component={Default} />
               <Route path="/post-detail" component={PostDetail} />
+              <Route path="/post-editing" component={PostForm} />
             </div>
           </React.Fragment>
         </BrowserRouter>

@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import './Post.css'
 import { CommentCounter, VoteCounter, EditDeleteBtns } from '../../components'
 
-export default class Post extends Component {
+class Post extends Component {
+    // ***********************************
+    // Events
+    // ***********************************
+    onBtnEditClicked = () => {
+        this.props.history.push('/post-editing')
+    }
+
+    // ***********************************
+    // Hooks
+    // ***********************************
     render() {
         const { bodyVisible } = this.props
         return (
@@ -20,7 +30,8 @@ export default class Post extends Component {
                         </Link>
                     </div>
                     <div className="control-side">
-                        <EditDeleteBtns />
+                        <EditDeleteBtns
+                            onBtnEditClicked={this.onBtnEditClicked} />
                     </div>
                 </div>
                 <div className="d-flex">
@@ -33,3 +44,5 @@ export default class Post extends Component {
         )
     }
 }
+
+export default withRouter(Post)

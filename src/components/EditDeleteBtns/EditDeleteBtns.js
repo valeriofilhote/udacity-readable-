@@ -7,11 +7,7 @@ export default class EditDeleteBtns extends Component {
     // ***********************************
     // Events
     // ***********************************
-    onBtnClicked = (type) => {
-        // type : up or down
-        console.log('type =>', type)
 
-    }
     // ***********************************
     // Hooks
     // ***********************************
@@ -20,14 +16,14 @@ export default class EditDeleteBtns extends Component {
             <div className="EditDeleteBtns">
                 <div
                     className="btns__container"
-                    onClick={() => this.onBtnClicked('edit')}>
+                    onClick={this.props.onBtnEditClicked}>
                     <img
                         src={EditIcon}
                         alt="Edit Post or Comment icon" />
                 </div>
                 <div
                     className="btns__container"
-                    onClick={() => this.onBtnClicked('delete')}>
+                    onClick={this.props.onBtnDeleteClicked}>
                     <img
                         src={DeleteIcon}
                         alt="Delete Post or Comment icon" />
