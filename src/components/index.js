@@ -15,6 +15,7 @@ import Select from './Select/Select'
 import Backdrop from './Backdrop/Backdrop'
 import NavBar from './NavBar/NavBar'
 import PostsList from './PostsList/PostsList'
+import Spinner from './Spinner/Spinner'
 
 export {
     Button,
@@ -33,5 +34,6 @@ export {
     Select,
     Backdrop,
     NavBar,
-    PostsList
+    PostsList,
+    Spinner
 }
