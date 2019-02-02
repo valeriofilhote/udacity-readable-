@@ -13,6 +13,8 @@ import InputLabel from './InputLabel/InputLabel'
 import TextArea from './TextArea/TextArea'
 import Select from './Select/Select'
 import Backdrop from './Backdrop/Backdrop'
+import NavBar from './NavBar/NavBar'
+import PostsList from './PostsList/PostsList'
 
 export {
     Button,
@@ -29,5 +31,7 @@ export {
     InputLabel,
     TextArea,
     Select,
-    Backdrop
+    Backdrop,
+    NavBar,
+    PostsList
 }

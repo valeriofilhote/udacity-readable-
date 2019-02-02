@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
-import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom'
 
-// Temp
-import CommentForm from '../CommentForm/CommentForm'
+import './App.css';
+import { NavBar } from '../../components'
+import Default from '../Default/Default'
+import PostDetail from '../PostDetail/PostDetail'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <CommentForm />
+        <BrowserRouter>
+          <React.Fragment>
+            <NavBar />
+            <div className="container" style={{ paddingTop: 85 }}>
+              <Route path="/" exact component={Default} />
+              <Route path="/post-detail" component={PostDetail} />
+            </div>
+          </React.Fragment>
+        </BrowserRouter>
       </div>
     );
   }

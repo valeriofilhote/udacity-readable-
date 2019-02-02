@@ -1,0 +1,7 @@
+.PostDetail{
+
+}
+.PostDetail .comment__container{
+    float: right;
+    width: 80%;
+}

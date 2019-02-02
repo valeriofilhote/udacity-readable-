@@ -1,0 +1,11 @@
+.Default{
+
+}
+.Default .sidebar__container{
+    float: left;
+    width: 190px;
+}
+.Default .main__container{
+    float: right;
+    width: calc(100% - 190px - 10px);
+}

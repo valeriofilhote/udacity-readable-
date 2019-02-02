@@ -53,3 +53,9 @@
 .pos-relative{
     position: relative;
 }
+
+/* Width */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}

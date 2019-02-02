@@ -4,7 +4,7 @@
     padding: 7px 25px;
     color: white;
     border-radius: 10px;
-    transform: font-weight 1s ease;
+    transition: font-weight 0.3s ease;
 }
 .Button:hover{
     cursor: pointer;

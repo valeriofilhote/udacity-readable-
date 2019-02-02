@@ -1,3 +1,6 @@
+.Sidebar{
+    background-color: white;
+}
 .Sidebar ul {
     list-style: none;
     border: 1px solid #E6ECF0;
