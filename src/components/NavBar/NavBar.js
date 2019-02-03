@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import './NavBar.css'
 import { NavItem, Button } from '../'
@@ -7,6 +8,7 @@ import {
     HomeActivedIcon, HomeNoActivedIcon, PostActivedIcon, PostNoActivedIcon,
 
 } from '../../assets/icons'
+import { navItemChange } from '../../actions/navbar.actions'
 
 class NavBar extends Component {
     state = {
@@ -16,7 +18,11 @@ class NavBar extends Component {
     // Events
     // ***********************************
     onBtnNewPostClicked = () => {
-
+        this.props.history.push('/new-post')
+    }
+    onHomeNavItemClicked = () => {
+        this.props.dispatch(navItemChange('Home'))
+        this.props.history.push('/')
     }
     // ***********************************
     // Hooks
@@ -52,7 +58,8 @@ class NavBar extends Component {
                 <React.Fragment>
                     <NavItem
                         imageSrcActived={HomeActivedIcon}
-                        imageSrcNoActived={HomeNoActivedIcon}>
+                        imageSrcNoActived={HomeNoActivedIcon}
+                        onClick={this.onHomeNavItemClicked}>
                         Home
                     </NavItem>
                     <NavItem
@@ -76,9 +83,11 @@ class NavBar extends Component {
                         onClick={this.onBtnNewPostClicked}
                         color="#1DA1F2">
                         New Post
-                            </Button>
+                    </Button>
                 </div>
             )
+        } if (navitemSelected === 'New Post' || navitemSelected === 'Editing Post') {
+            return null
         } else {
             return (
                 <div style={{ marginTop: 16, display: 'inline-block' }}>
@@ -87,7 +96,7 @@ class NavBar extends Component {
                         onClick={this.onBtnNewPostClicked}
                         color="#F1A31D">
                         New Comment
-                            </Button>
+                    </Button>
                 </div>
             )
         }
@@ -100,4 +109,4 @@ const mapToProps = ({ navbar }) => {
     }
 }
 
-export default connect(mapToProps)(NavBar)
+export default connect(mapToProps)(withRouter(NavBar))

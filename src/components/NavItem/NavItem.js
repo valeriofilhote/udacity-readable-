@@ -2,7 +2,9 @@ import React from 'react'
 import './NavItem.css'
 
 
-export default function NavItem({ imageSrcActived, imageSrcNoActived, children, actived }) {
+export default function NavItem({
+    imageSrcActived, imageSrcNoActived, children, actived, onClick
+}) {
     const styles = {
         actived: {
             color: '#1DA1F2',
@@ -14,7 +16,10 @@ export default function NavItem({ imageSrcActived, imageSrcNoActived, children, 
         }
     }
     return (
-        <div className="NavItem" style={actived ? styles.actived : styles.noActived}>
+        <div
+            className="NavItem"
+            style={actived ? styles.actived : styles.noActived}
+            onClick={onClick ? () => onClick(children) : () => { }}>
             <div className="content">
                 <img
                     src={actived ? imageSrcActived : imageSrcNoActived}

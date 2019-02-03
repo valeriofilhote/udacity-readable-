@@ -9,22 +9,21 @@ import {
     Badge, ReadableTimestamp
 } from '../../components'
 import { getPostDetail, selectPost } from '../../actions/post.actions'
+import { navItemChange } from '../../actions/navbar.actions'
 
 class Post extends Component {
     // ***********************************
     // Events
     // ***********************************
     onBtnEditClicked = () => {
-        this.props.history.push('/post-editing')
+        // this.props.history.push('/post-editing')
     }
     onPostClicked = () => {
         const { post: { id }, dispatch } = this.props
         // Reset Actual Selected Post
         dispatch(selectPost(null))
-        // Fecthing the New Post Detail
-        dispatch(getPostDetail(id))
-
-        this.props.history.push('/post-detail')
+        // Navigating ...
+        this.props.history.push(`/post-detail/${id}`)
     }
 
     // ***********************************
