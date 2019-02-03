@@ -7,7 +7,6 @@ import { NavBar } from '../../components'
 import Default from '../Default/Default'
 import PostDetail from '../PostDetail/PostDetail'
 import PostForm from '../PostForm/PostForm'
-import { navItemChange } from '../../actions/navbar.actions'
 import { getPostDetail } from '../../actions/post.actions'
 
 class App extends Component {
@@ -21,7 +20,7 @@ class App extends Component {
               <Route path="/" exact component={Default} />
               <Route path="/post-detail/:postId" render={this._postDetailRoute} />
               <Route path="/post-editing" component={PostForm} />
-              <Route path="/new-post" render={this._newPostRoute} />
+              <Route path="/new-post" component={PostForm} />
             </div>
           </React.Fragment>
         </BrowserRouter>
@@ -30,13 +29,8 @@ class App extends Component {
   }
   _postDetailRoute = (routeInfo) => {
     const { match: { params: { postId } } } = routeInfo
-    this.props.dispatch(navItemChange('Post Detail'))
     this.props.dispatch(getPostDetail(postId))
     return <PostDetail />
-  }
-  _newPostRoute = () => {
-    this.props.dispatch(navItemChange('New Post'))
-    return <PostForm />
   }
 }
 

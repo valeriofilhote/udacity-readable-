@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import './CommentCounter.css'
 import { CommentIcon } from '../../assets/icons'

@@ -9,7 +9,7 @@ export default function Select({ label, items, value, onChange }) {
             <InputLabel>{label}</InputLabel>
             <select value={value} onChange={event => onChange(event.target.value)}>
                 {
-                    items.map(i => <option key={i.label} value={i.label}>{i.name}</option>)
+                    items.map(i => <option key={i.path} value={i.path}>{i.name}</option>)
                 }
             </select>
         </div>

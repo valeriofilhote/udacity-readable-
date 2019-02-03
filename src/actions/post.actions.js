@@ -5,6 +5,7 @@ import { setComments } from './commet.actions'
 export const FETCH_ALL_POSTS = 'FETCH_ALL_POSTS'
 export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS'
 export const SELECT_POST = 'SELECT_POST'
+export const ADD_NEW_POST = 'ADD_NEW_POST'
 
 export function fetchAllPosts() {
     return async dispatch => {
@@ -25,7 +26,6 @@ export function fetchAllPosts() {
         }
     }
 }
-
 export function receiveAllPosts(posts) {
     return { type: RECEIVE_ALL_POSTS, posts }
 }
@@ -46,6 +46,18 @@ export function getPostDetail(postId) {
             dispatch(setComments(comments))
         } catch (error) {
             console.log('error =>', error)
+        }
+    }
+}
+export function addNewPost(post) {
+    return async dispatch => {
+        try {
+            const response = await http.addNewPost(post)
+            const data = response.data
+            console.log(' data =>', data)
+
+        } catch (error) {
+
         }
     }
 }

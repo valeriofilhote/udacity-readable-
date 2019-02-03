@@ -4,9 +4,13 @@ import { connect } from 'react-redux'
 import './PostDetail.css'
 import { Post, Comment, Spinner } from '../../components'
 import CommentForm from '../CommentForm/CommentForm'
+import { navItemChange } from '../../actions/navbar.actions'
 
 class PostDetail extends Component {
 
+    componentDidMount() {
+        this.props.dispatch(navItemChange('Post Detail'))
+    }
     render() {
         const { selectedPost, selectedComment, comments } = this.props
         const detailElement = (

@@ -8,8 +8,7 @@ import {
     CommentCounter, VoteCounter, EditDeleteBtns,
     Badge, ReadableTimestamp
 } from '../../components'
-import { getPostDetail, selectPost } from '../../actions/post.actions'
-import { navItemChange } from '../../actions/navbar.actions'
+import { selectPost } from '../../actions/post.actions'
 
 class Post extends Component {
     // ***********************************
