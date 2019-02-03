@@ -45,7 +45,7 @@ export function editPost(post) {
     return authHttp.put(`/posts/${id}`, { title, body })
 }
 export function editComment(comment) {
-    const { id, timestamp, body } = post
+    const { id, timestamp, body } = comment
     return authHttp.put(`/comments/${id}`, { timestamp, body })
 }
 

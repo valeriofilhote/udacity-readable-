@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 
 import './Post.css'
-import { CommentCounter, VoteCounter, EditDeleteBtns } from '../../components'
+import {
+    CommentCounter, VoteCounter, EditDeleteBtns,
+    Badge, ReadableTimestamp
+} from '../../components'
+import { getPostDetail, selectPost } from '../../actions/post.actions'
 
 class Post extends Component {
     // ***********************************
@@ -11,23 +17,37 @@ class Post extends Component {
     onBtnEditClicked = () => {
         this.props.history.push('/post-editing')
     }
+    onPostClicked = () => {
+        const { post: { id }, dispatch } = this.props
+        // Reset Actual Selected Post
+        dispatch(selectPost(null))
+        // Fecthing the New Post Detail
+        dispatch(getPostDetail(id))
+
+        this.props.history.push('/post-detail')
+    }
 
     // ***********************************
     // Hooks
     // ***********************************
     render() {
-        const { bodyVisible } = this.props
+        const { bodyVisible, post: { author, title, body, commentCount, voteScore, category, timestamp } } = this.props
+
         return (
             <div className="Post">
                 <div className="Post__wrapper">
                     <div className="info-side">
-                        <Link to="/post-detail" className="info-side__wrapper">
-                            <span>by: Valerio F. Guimaraes</span>
-                            <h5>Um forte abraço a todos e até breve! Deus no comando!</h5>
+                        <div className="info-side__wrapper" onClick={this.onPostClicked}>
+                            <span>by: {author}</span>
+                            <h5>{title}</h5>
                             <p style={bodyVisible ? { display: 'block' } : { display: 'none' }}>
-                                t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                </p>
-                        </Link>
+                                {body}
+                            </p>
+                            <div>
+                                <Badge>{category}</Badge>
+                                <ReadableTimestamp>{timestamp}</ReadableTimestamp>
+                            </div>
+                        </div>
                     </div>
                     <div className="control-side">
                         <EditDeleteBtns
@@ -35,9 +55,9 @@ class Post extends Component {
                     </div>
                 </div>
                 <div className="d-flex">
-                    <CommentCounter />
+                    <CommentCounter counter={commentCount} />
                     <div className="d-inline-block m-l-2">
-                        <VoteCounter />
+                        <VoteCounter score={voteScore} />
                     </div>
                 </div>
             </div>
@@ -45,4 +65,4 @@ class Post extends Component {
     }
 }
 
-export default withRouter(Post)
+export default connect()(withRouter(Post))

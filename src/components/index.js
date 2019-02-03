@@ -16,6 +16,7 @@ import Backdrop from './Backdrop/Backdrop'
 import NavBar from './NavBar/NavBar'
 import PostsList from './PostsList/PostsList'
 import Spinner from './Spinner/Spinner'
+import ReadableTimestamp from './ReadableTimestamp/ReadableTimestamp'
 
 export {
     Button,
@@ -35,5 +36,6 @@ export {
     Backdrop,
     NavBar,
     PostsList,
-    Spinner
+    Spinner,
+    ReadableTimestamp
 }

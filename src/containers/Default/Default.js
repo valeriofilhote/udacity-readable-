@@ -1,34 +1,33 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import './Default.css'
 import { Sidebar, PostsList, Spinner } from '../../components'
+import { fetchAllPosts } from '../../actions/post.actions'
 
-export default class Default extends Component {
+class Default extends Component {
+    // ***********************************
+    // Hokks
+    // ***********************************
+    componentDidMount() {
+        this.props.dispatch(fetchAllPosts())
+    }
     render() {
-        const categories = [
-            {
-                name: 'react',
-                path: 'react'
-            },
-            {
-                name: 'redux',
-                path: 'redux'
-            },
-            {
-                name: 'udacity',
-                path: 'udacity'
-            }
-        ]
-        return (
-            // <div className="Default">
-            //     <div className="sidebar__container text-center">
-            //         <Sidebar categories={categories} activedMenuName="all" />
-            //     </div>
-            //     <div className="main__container" style={{ paddingLeft: 10 }}>
-            //         <PostsList />
-            //     </div>
-            // </div>
-            <div className="text-center"><Spinner /></div>
+        const defaultView = (
+            <div className="Default">
+                <div className="sidebar__container text-center">
+                    <Sidebar categories={this.props.categories} activedMenuName="all" />
+                </div>
+                <div className="main__container" style={{ paddingLeft: 10 }}>
+                    <PostsList />
+                </div>
+            </div>
         )
+        const spinnerView = <div className="text-center"><Spinner /></div>
+
+        return this.props.categories.length === 0 ? spinnerView : defaultView
     }
 }
+const mapToProps = ({ category: { categories }, post: { posts } }) => ({ categories, posts })
+
+export default connect(mapToProps)(Default)

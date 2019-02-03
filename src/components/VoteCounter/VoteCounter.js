@@ -16,6 +16,7 @@ export default class VoteCounter extends Component {
     // Hooks
     // ***********************************
     render() {
+        const { score } = this.props
         return (
             <div className="VoteCounter">
                 <div
@@ -26,7 +27,7 @@ export default class VoteCounter extends Component {
                         src={ThumbUpIcon}
                         alt="Like Post or Comment icon" />
                 </div>
-                <label>2</label>
+                <label>{score}</label>
                 <div
                     className="thumb__container"
                     onClick={() => this.onThumbClicked('down')}>

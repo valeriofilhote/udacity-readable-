@@ -8,13 +8,14 @@
 .Post .info-side{
     flex: 1;
 }
-.info-side__wrapper{
+/* .info-side__wrapper{
     display: block;
     text-decoration: none;
     color: black;
-}
+} */
 .info-side__wrapper:hover{
     background-color: #f4f4f4;
+    cursor: pointer;
 }
 .info-side span {
     font-size: 12px;
