@@ -8,7 +8,7 @@ import {
     HomeActivedIcon, HomeNoActivedIcon, PostActivedIcon, PostNoActivedIcon,
 
 } from '../../assets/icons'
-import { navItemChange } from '../../actions/navbar.actions'
+import { navItemChange, showCommentModal } from '../../actions/navbar.actions'
 import { selectPost } from '../../actions/post.actions'
 
 class NavBar extends Component {
@@ -25,6 +25,9 @@ class NavBar extends Component {
     onHomeNavItemClicked = () => {
         this.props.dispatch(navItemChange('Home'))
         this.props.history.push('/')
+    }
+    onBtnNewCommentClicked = () => {
+        this.props.dispatch(showCommentModal(true))
     }
     // ***********************************
     // Hooks
@@ -95,7 +98,7 @@ class NavBar extends Component {
                 <div style={{ marginTop: 16, display: 'inline-block' }}>
                     <Button
                         style={{ marginTop: 20 }}
-                        onClick={this.onBtnNewPostClicked}
+                        onClick={this.onBtnNewCommentClicked}
                         color="#F1A31D">
                         New Comment
                     </Button>

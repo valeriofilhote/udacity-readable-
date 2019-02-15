@@ -10,6 +10,7 @@ export const SELECT_POST = 'SELECT_POST'
 export const ADD_NEW_POST = 'ADD_NEW_POST'
 export const VOTE_SCORE_CHANGE = 'VOTE_SCORE_CHANGE'
 export const SORTED_BY_CHANGE = 'SORTED_BY_CHANGE'
+export const DELETE_POST = 'DELETE_POST'
 
 export function fetchAllPosts() {
     return async (dispatch, getState) => {
@@ -133,4 +134,17 @@ export function vote(postId, option) {
 }
 export function sortPostBy(type) {
     return { type: SORTED_BY_CHANGE, sortedBy: type }
+}
+export function deletePost(postId) {
+    return async (dispatch, getState) => {
+        try {
+            await http.deletePost(postId)
+            const { post: { posts } } = getState()
+            const filteredPosts = posts.filter(p => p.id !== postId)
+            dispatch(receiveAllPosts(filteredPosts))
+            dispatch(navItemChange('Home'))
+        } catch (error) {
+            console.log('error =>', error)
+        }
+    }
 }

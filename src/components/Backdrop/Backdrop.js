@@ -4,6 +4,8 @@ import './Backdrop.css'
 
 export default function Backdrop({ children }) {
     return (
-        <div className="Backdrop">{children}</div>
+        <div className="Backdrop">
+            {children}
+        </div>
     )
 }

@@ -18,7 +18,7 @@ class App extends Component {
             <NavBar />
             <div className="container" style={{ paddingTop: 85 }}>
               <Route path="/" exact render={this._listAllPosts} />
-              <Route path="/post-detail/:postId" render={this._postDetailRoute} />
+              <Route path="/post-detail/:category/:postId" render={this._postDetailRoute} />
               <Route path="/post-editing" component={PostForm} />
               <Route path="/new-post" render={this._newPost} />
               <Route path="/filterBy/:category" render={this._listPostByCategory} />

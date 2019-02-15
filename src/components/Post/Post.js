@@ -8,7 +8,7 @@ import {
     CommentCounter, VoteCounter, EditDeleteBtns,
     Badge, ReadableTimestamp
 } from '../../components'
-import { selectPost, vote } from '../../actions/post.actions'
+import { selectPost, vote, deletePost } from '../../actions/post.actions'
 
 class Post extends Component {
     // ***********************************
@@ -19,12 +19,17 @@ class Post extends Component {
         dispatch(selectPost(post))
         history.push('/post-editing')
     }
+    onBtnDeleteClicked = () => {
+        const { post, dispatch, history } = this.props
+        dispatch(deletePost(post.id))
+        history.push('/')
+    }
     onPostClicked = () => {
-        const { post: { id }, dispatch } = this.props
+        const { post: { id, category }, dispatch } = this.props
         // Reset Actual Selected Post
         dispatch(selectPost(null))
         // Navigating ...
-        this.props.history.push(`/post-detail/${id}`)
+        this.props.history.push(`/post-detail/${category}/${id}`)
     }
     onVoteClicked = (option) => {
         // option: upVote or downVote
@@ -37,7 +42,6 @@ class Post extends Component {
     // ***********************************
     render() {
         const { bodyVisible, post: { author, title, body, commentCount, voteScore, category, timestamp } } = this.props
-
         return (
             <div className="Post">
                 <div className="Post__wrapper">
@@ -56,7 +60,8 @@ class Post extends Component {
                     </div>
                     <div className="control-side">
                         <EditDeleteBtns
-                            onBtnEditClicked={this.onBtnEditClicked} />
+                            onBtnEditClicked={this.onBtnEditClicked}
+                            onBtnDeleteClicked={this.onBtnDeleteClicked} />
                     </div>
                 </div>
                 <div className="d-flex">

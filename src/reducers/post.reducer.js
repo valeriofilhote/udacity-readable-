@@ -25,15 +25,17 @@ export default function (state = initState, action) {
                 selectedPost: action.post
             }
         case VOTE_SCORE_CHANGE:
-            const { posts } = state
+            const { posts, selectedPost } = state
             const { post } = action
+            // Update Posts
             const index = posts.findIndex(p => p.id === post.id)
             if (index !== -1) {
                 posts[index] = post
             }
             return {
                 ...state,
-                posts: [...posts]
+                posts: [...posts],
+                selectedPost: selectedPost.id === post.id ? post : selectedPost
             }
         case SORTED_BY_CHANGE:
             return {

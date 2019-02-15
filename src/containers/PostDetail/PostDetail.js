@@ -12,7 +12,7 @@ class PostDetail extends Component {
         this.props.dispatch(navItemChange('Post Detail'))
     }
     render() {
-        const { selectedPost, selectedComment, comments } = this.props
+        const { selectedPost, selectedComment, comments, showCommentModal } = this.props
         const detailElement = (
             <React.Fragment>
                 <div className="PostDetail">
@@ -24,7 +24,7 @@ class PostDetail extends Component {
                     ))}
 
                 </div>
-                {selectedComment ? <CommentForm /> : null}
+                {showCommentModal ? <CommentForm /> : null}
             </React.Fragment>
         )
         const spinnerElement = <div className="text-center"><Spinner /></div>
@@ -32,8 +32,12 @@ class PostDetail extends Component {
         return selectedPost ? detailElement : spinnerElement
     }
 }
-const mapToProp = ({ post: { selectedPost }, comment: { selectedComment, comments } }) => (
-    { selectedPost, selectedComment, comments }
-)
+const mapToProp = ({
+    post: { selectedPost },
+    comment: { selectedComment, comments },
+    navbar: { showCommentModal }
+}) => (
+        { selectedPost, selectedComment, comments, showCommentModal }
+    )
 
 export default connect(mapToProp)(PostDetail)

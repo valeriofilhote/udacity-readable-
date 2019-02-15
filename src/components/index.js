@@ -17,6 +17,7 @@ import NavBar from './NavBar/NavBar'
 import PostsList from './PostsList/PostsList'
 import Spinner from './Spinner/Spinner'
 import ReadableTimestamp from './ReadableTimestamp/ReadableTimestamp'
+import CloseButton from './CloseButton/CloseButton'
 
 export {
     Button,
@@ -37,5 +38,6 @@ export {
     NavBar,
     PostsList,
     Spinner,
-    ReadableTimestamp
+    ReadableTimestamp,
+    CloseButton
 }
