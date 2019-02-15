@@ -1,8 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import './Header.css'
 
-export default class Header extends React.Component {
+class Header extends React.Component {
     state = {
         sortedby: 'byDate'
     }
@@ -13,6 +14,7 @@ export default class Header extends React.Component {
         this.setState({ sortedby: value })
     }
     render() {
+        const { selectedCategory } = this.props
         return (
             <nav
                 className="Header bck-color-primary-light d-flex justify-between"
@@ -45,9 +47,12 @@ export default class Header extends React.Component {
                 </div>
                 <div className="controls__container">
                     <label>Category:</label>
-                    <span className="selectedCategory">all</span>
+                    <span className="selectedCategory">{selectedCategory}</span>
                 </div>
             </nav>
         )
     }
 }
+
+const mapToProps = ({category:{selectedCategory}}) => ({selectedCategory})
+export default connect(mapToProps)(Header)

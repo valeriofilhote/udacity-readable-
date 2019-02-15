@@ -8,8 +8,14 @@ export default class VoteCounter extends Component {
     // Events
     // ***********************************
     onThumbClicked = (type) => {
-        // type : up or down
-        console.log('type =>', type)
+        const { onUpClicked, onDownClicked } = this.props
+        if (type === 'up') {
+            onUpClicked('upVote')
+        } else if (type === 'down') {
+            onDownClicked('downVote')
+        } else {
+            console.error('Type is not specified')
+        }
 
     }
     // ***********************************

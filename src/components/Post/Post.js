@@ -8,7 +8,7 @@ import {
     CommentCounter, VoteCounter, EditDeleteBtns,
     Badge, ReadableTimestamp
 } from '../../components'
-import { selectPost } from '../../actions/post.actions'
+import { selectPost, vote } from '../../actions/post.actions'
 
 class Post extends Component {
     // ***********************************
@@ -23,6 +23,11 @@ class Post extends Component {
         dispatch(selectPost(null))
         // Navigating ...
         this.props.history.push(`/post-detail/${id}`)
+    }
+    onVoteClicked = (option) => {
+        // option: upVote or downVote
+        const { dispatch, post: { id } } = this.props
+        dispatch(vote(id, option))
     }
 
     // ***********************************
@@ -55,7 +60,10 @@ class Post extends Component {
                 <div className="d-flex">
                     <CommentCounter counter={commentCount} />
                     <div className="d-inline-block m-l-2">
-                        <VoteCounter score={voteScore} />
+                        <VoteCounter
+                            onUpClicked={option => this.onVoteClicked(option)}
+                            onDownClicked={option => this.onVoteClicked(option)}
+                            score={voteScore} />
                     </div>
                 </div>
             </div>

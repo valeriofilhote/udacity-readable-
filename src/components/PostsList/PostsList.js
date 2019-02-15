@@ -7,7 +7,6 @@ import './PostsList.css'
 
 class PostsList extends Component {
     render() {
-        //bodyVisible
         return (
             <div className="PostsList">
                 <Header />
