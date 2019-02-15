@@ -7,7 +7,7 @@ import { NavBar } from '../../components'
 import Default from '../Default/Default'
 import PostDetail from '../PostDetail/PostDetail'
 import PostForm from '../PostForm/PostForm'
-import { getPostDetail, fetchAllPosts, fetchPostsByCategory } from '../../actions/post.actions'
+import { getPostDetail, fetchAllPosts, fetchPostsByCategory, goToNewPostForm } from '../../actions/post.actions'
 
 class App extends Component {
   render() {
@@ -18,10 +18,10 @@ class App extends Component {
             <NavBar />
             <div className="container" style={{ paddingTop: 85 }}>
               <Route path="/" exact render={this._listAllPosts} />
-              <Route path="/:category" render={this._listPostByCategory} />
               <Route path="/post-detail/:postId" render={this._postDetailRoute} />
               <Route path="/post-editing" component={PostForm} />
-              <Route path="/new-post" component={PostForm} />
+              <Route path="/new-post" render={this._newPost} />
+              <Route path="/filterBy/:category" render={this._listPostByCategory} />
             </div>
           </React.Fragment>
         </BrowserRouter>
@@ -41,6 +41,10 @@ class App extends Component {
   _listAllPosts = () => {
     this.props.dispatch(fetchAllPosts())
     return <Default />
+  }
+  _newPost = () => {
+    this.props.dispatch(goToNewPostForm())
+    return <PostForm />
   }
 }
 

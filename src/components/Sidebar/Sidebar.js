@@ -31,7 +31,7 @@ class Sidebar extends React.Component {
                                     key={c.name}
                                     className={selectedCategory === c.name ? 'font-bold font-color-primary' : 'font-color-primary'}
                                     style={{ textTransform: 'capitalize' }}>
-                                    <Link to={`/${c.name}`} style={{ textDecoration: 'none', color: 'inherit' }}> {c.name}</Link>
+                                    <Link to={`/filterBy/${c.name}`} style={{ textDecoration: 'none', color: 'inherit' }}> {c.name}</Link>
                                 </li>
                             ))
                         }

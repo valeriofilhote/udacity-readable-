@@ -15,7 +15,9 @@ class Post extends Component {
     // Events
     // ***********************************
     onBtnEditClicked = () => {
-        // this.props.history.push('/post-editing')
+        const { post, dispatch, history } = this.props
+        dispatch(selectPost(post))
+        history.push('/post-editing')
     }
     onPostClicked = () => {
         const { post: { id }, dispatch } = this.props

@@ -9,6 +9,7 @@ import {
 
 } from '../../assets/icons'
 import { navItemChange } from '../../actions/navbar.actions'
+import { selectPost } from '../../actions/post.actions'
 
 class NavBar extends Component {
     state = {
@@ -18,6 +19,7 @@ class NavBar extends Component {
     // Events
     // ***********************************
     onBtnNewPostClicked = () => {
+        this.props.dispatch(selectPost(null))
         this.props.history.push('/new-post')
     }
     onHomeNavItemClicked = () => {

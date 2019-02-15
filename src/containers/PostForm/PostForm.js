@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import uuidv1 from 'uuid/v1'
 
 import './PostForm.css'
 import { FormCard, InputText, TextArea, Select, Button } from '../../components'
 import { navItemChange } from '../../actions/navbar.actions'
-import { addNewPost } from '../../actions/post.actions'
+import { addNewPost, editPost } from '../../actions/post.actions'
 
 class PostForm extends Component {
 
@@ -21,13 +22,15 @@ class PostForm extends Component {
     onBtnPostClicked = (event, type) => {
         event.preventDefault()
         if (type === 'editing') {
-
+            const { id, title, body } = this.state.formData
+            this.props.dispatch(editPost({ id, title, body }))
         } else if (type === 'add') {
             const id = uuidv1()
             const timestamp = Date.now()
             const { title, body, author, category } = this.state.formData
             this.props.dispatch(addNewPost({ id, title, body, author, category, timestamp }))
         }
+        this.props.history.push('/')
     }
     // ***********************************
     // Hooks
@@ -40,17 +43,16 @@ class PostForm extends Component {
                 title: '',
                 body: '',
                 author: '',
-                category: props.categories && props.categories.lenght > 0 ? props.categories[0].path : '',
+                category: 'react',
             }
         }
     }
     componentDidMount() {
-        const { postId, posts } = this.props
-        if (postId) {
+        const { selectedPost } = this.props
+        if (selectedPost) {
             this.props.dispatch(navItemChange('Editing Post'))
-            const post = posts.find(p => p.id === postId)
-            post && this.setState(state => {
-                const { id, title, body, author, category } = post
+            this.setState(state => {
+                const { id, title, body, author, category } = selectedPost
                 state.formData = { id, title, body, author, category }
                 return state
             })
@@ -60,8 +62,7 @@ class PostForm extends Component {
     }
     render() {
         const { title, body, author, category } = this.state.formData
-        const { categories, postId } = this.props
-
+        const { categories, selectedPost } = this.props
         return (
             <div className="PostForm">
                 <FormCard>
@@ -78,12 +79,14 @@ class PostForm extends Component {
                         </div>
                         <div className="m-t-1">
                             <InputText
+                                disabled={selectedPost}
                                 label="Author"
                                 value={author}
                                 onChange={value => this.onInputChange('author', value)} />
                         </div>
                         <div className="m-t-1">
                             <Select
+                                disabled={selectedPost}
                                 label="Category"
                                 value={category}
                                 items={categories}
@@ -92,11 +95,11 @@ class PostForm extends Component {
                         <div className="m-t-1 text-center">
                             <Button
                                 color="#1DA1F2"
-                                onClick={postId
+                                onClick={selectedPost
                                     ? (e) => this.onBtnPostClicked(e, 'editing')
                                     : (e) => this.onBtnPostClicked(e, 'add')
                                 }>
-                                {postId ? 'Save Post' : 'Add Post'}
+                                {selectedPost ? 'Save Post' : 'Add Post'}
                             </Button>
                         </div>
                     </form>
@@ -106,5 +109,5 @@ class PostForm extends Component {
     }
 }
 
-const mapToProps = ({ category: { categories }, post: { posts } }) => ({ categories, posts })
-export default connect(mapToProps)(PostForm)
+const mapToProps = ({ category: { categories }, post: { selectedPost } }) => ({ categories, selectedPost })
+export default connect(mapToProps)(withRouter(PostForm))

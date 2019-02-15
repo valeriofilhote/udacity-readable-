@@ -1,17 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { sortPostBy } from '../../../actions/post.actions'
 import './Header.css'
 
 class Header extends React.Component {
-    state = {
-        sortedby: 'byDate'
+    // ***********************************
+    // Events
+    // ***********************************
+    onSortedByChange = (value) => {
+        this.setState({ sortedby: value })
+        this.props.dispatch(sortPostBy(value))
     }
     // ***********************************
     // Hooks
     // ***********************************
-    onSortedByChange = (value) => {
-        this.setState({ sortedby: value })
+    constructor(props) {
+        super(props)
+        this.state = {
+            sortedby: props.sortedBy
+        }
     }
     render() {
         const { selectedCategory } = this.props
@@ -54,5 +62,5 @@ class Header extends React.Component {
     }
 }
 
-const mapToProps = ({category:{selectedCategory}}) => ({selectedCategory})
+const mapToProps = ({ category: { selectedCategory }, post: { sortedBy } }) => ({ selectedCategory, sortedBy })
 export default connect(mapToProps)(Header)

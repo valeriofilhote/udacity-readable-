@@ -1,8 +1,15 @@
-import { RECEIVE_ALL_POSTS, SELECT_POST, VOTE_SCORE_CHANGE } from '../actions/post.actions'
+import {
+    RECEIVE_ALL_POSTS,
+    SELECT_POST,
+    VOTE_SCORE_CHANGE,
+    SORTED_BY_CHANGE
+} from '../actions/post.actions'
+import * as util from '../util'
 
 const initState = {
     posts: [],
-    selectedPost: null
+    selectedPost: null,
+    sortedBy: 'byDate', //'byDate' or 'byVoteScore'
 }
 
 export default function (state = initState, action) {
@@ -27,6 +34,12 @@ export default function (state = initState, action) {
             return {
                 ...state,
                 posts: [...posts]
+            }
+        case SORTED_BY_CHANGE:
+            return {
+                ...state,
+                posts: [...util.sortedBy(action.sortedBy, state.posts)],
+                sortedBy: action.sortedBy
             }
         default:
             return state

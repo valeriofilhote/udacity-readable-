@@ -1,15 +1,18 @@
 import * as http from '../api/http'
 import { receiveCategories, selectedCategoryChange } from './category.actions'
 import { setComments } from './commet.actions'
+import { navItemChange } from './navbar.actions'
+import * as util from '../util'
 
 export const FETCH_ALL_POSTS = 'FETCH_ALL_POSTS'
 export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS'
 export const SELECT_POST = 'SELECT_POST'
 export const ADD_NEW_POST = 'ADD_NEW_POST'
 export const VOTE_SCORE_CHANGE = 'VOTE_SCORE_CHANGE'
+export const SORTED_BY_CHANGE = 'SORTED_BY_CHANGE'
 
 export function fetchAllPosts() {
-    return async dispatch => {
+    return async (dispatch, getState) => {
         try {
             const [responsePosts, responseCategories] = await Promise.all([
                 http.getAllPosts(),
@@ -18,10 +21,12 @@ export function fetchAllPosts() {
 
             const posts = responsePosts.data
             const categories = responseCategories.data.categories
+            const { post: { sortedBy } } = getState()
 
-            dispatch(receiveAllPosts(posts))
+            dispatch(receiveAllPosts(util.sortedBy(sortedBy, posts)))
             dispatch(receiveCategories(categories))
             dispatch(selectedCategoryChange('all'))
+            dispatch(navItemChange('Home'))
 
         } catch (error) {
             console.log('error =>', error)
@@ -31,7 +36,7 @@ export function fetchAllPosts() {
 export function fetchPostsByCategory(category) {
     return async (dispatch, getState) => {
         try {
-            const { category: { categories } } = getState()
+            const { category: { categories }, post: { sortedBy } } = getState()
             let posts;
 
             if (categories.length === 0) {
@@ -47,7 +52,7 @@ export function fetchPostsByCategory(category) {
                 posts = response.data
             }
             dispatch(selectedCategoryChange(category))
-            dispatch(receiveAllPosts(posts))
+            dispatch(receiveAllPosts(util.sortedBy(sortedBy, posts)))
         } catch (error) {
             console.log('error =>', error)
         }
@@ -79,12 +84,34 @@ export function getPostDetail(postId) {
 export function addNewPost(post) {
     return async dispatch => {
         try {
-            const response = await http.addNewPost(post)
-            const data = response.data
-            console.log(' data =>', data)
-
+            await http.addNewPost(post)
+            dispatch(navItemChange('Home'))
         } catch (error) {
-
+            console.log('error =>', error)
+        }
+    }
+}
+export function editPost(post) {
+    return async dispatch => {
+        try {
+            await http.editPost(post)
+            dispatch(navItemChange('Home'))
+        } catch (error) {
+            console.log('error =>', error)
+        }
+    }
+}
+export function goToNewPostForm() {
+    return async (dispatch, getState) => {
+        try {
+            const { category: { categories } } = getState()
+            if (categories.length === 0) {
+                const response = await http.getAllCategories()
+                const categoriesList = response.data.categories
+                dispatch(receiveCategories(categoriesList))
+            }
+        } catch (error) {
+            console.log('error =>', error)
         }
     }
 }
@@ -103,4 +130,7 @@ export function vote(postId, option) {
 
         }
     }
+}
+export function sortPostBy(type) {
+    return { type: SORTED_BY_CHANGE, sortedBy: type }
 }
