@@ -5,7 +5,7 @@ import uuidv1 from 'uuid/v1'
 
 import { Backdrop, InputText, TextArea, Button, FormCard, CloseButton } from '../../components'
 import { showCommentModal } from '../../actions/navbar.actions'
-import { addComment } from '../../actions/commet.actions'
+import { addComment, editComment } from '../../actions/commet.actions'
 
 class CommentForm extends Component {
 
@@ -30,8 +30,17 @@ class CommentForm extends Component {
         }
         this.props.dispatch(addComment(comment))
     }
-    onBtnSaveCommentClicked = () => {
-
+    onBtnSaveCommentClicked = (event) => {
+        event.preventDefault()
+        const { body } = this.state.formData
+        const { dispatch, selectedComment } = this.props
+        const comment = {
+            ...selectedComment,
+            body,
+            timestamp: Date.now()
+        }
+        dispatch(editComment(comment))
+        this.onDismiss()
     }
     onDismiss = () => {
         this.props.dispatch(showCommentModal(false))
@@ -69,6 +78,7 @@ class CommentForm extends Component {
                             onChange={value => this.onInputChange('body', value)} />
                         <div className="m-t-1">
                             <InputText
+                                disabled={selectedComment}
                                 label="Author"
                                 value={author}
                                 onChange={value => this.onInputChange('author', value)} />
@@ -78,7 +88,7 @@ class CommentForm extends Component {
                                 color="#F1A31D"
                                 onClick={
                                     selectedComment
-                                        ? this.onBtnSaveCommentClicked
+                                        ? event => this.onBtnSaveCommentClicked(event)
                                         : event => this.onBtnAddCommentClicked(event)
                                 }>
                                 {

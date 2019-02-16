@@ -1,7 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Instalation
-Clone the directory and run:
+
+1. Clone a [local backend development server](https://github.com/udacity/reactnd-project-readable-starter)
+2. Run `node server.js`
+3. Clone the this directory and run:
 
 ### `npm install`
 
@@ -9,7 +12,7 @@ Clone the directory and run:
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm start` or `yarn start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

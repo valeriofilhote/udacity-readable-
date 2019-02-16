@@ -12,7 +12,7 @@ class PostDetail extends Component {
         this.props.dispatch(navItemChange('Post Detail'))
     }
     render() {
-        const { selectedPost, selectedComment, comments, showCommentModal } = this.props
+        const { selectedPost, comments, showCommentModal } = this.props
         const detailElement = (
             <React.Fragment>
                 <div className="PostDetail">

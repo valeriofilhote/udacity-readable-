@@ -10,11 +10,10 @@ import {
 } from '../../assets/icons'
 import { navItemChange, showCommentModal } from '../../actions/navbar.actions'
 import { selectPost } from '../../actions/post.actions'
+import { selectedComment } from '../../actions/commet.actions'
 
 class NavBar extends Component {
-    state = {
 
-    }
     // ***********************************
     // Events
     // ***********************************
@@ -27,6 +26,7 @@ class NavBar extends Component {
         this.props.history.push('/')
     }
     onBtnNewCommentClicked = () => {
+        this.props.dispatch(selectedComment(null))
         this.props.dispatch(showCommentModal(true))
     }
     // ***********************************

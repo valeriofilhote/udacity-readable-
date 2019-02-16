@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { VoteCounter, EditDeleteBtns } from '../'
-import { deleteComment } from '../../actions/commet.actions'
+import { deleteComment, vote, selectedComment } from '../../actions/commet.actions'
+import { showCommentModal } from '../../actions/navbar.actions'
 import './Comment.css'
 
 class Comment extends Component {
@@ -13,8 +14,15 @@ class Comment extends Component {
         const { dispatch, comment: { id } } = this.props
         dispatch(deleteComment(id))
     }
+    onVoteClicked = (option) => {
+        // option: upVote or downVote
+        const { dispatch, comment: { id } } = this.props
+        dispatch(vote(id, option))
+    }
     onEditClicked = () => {
-
+        const { dispatch, comment } = this.props
+        dispatch(selectedComment(comment))
+        dispatch(showCommentModal(true))
     }
     // ***********************************
     // Life Cicle
@@ -28,7 +36,10 @@ class Comment extends Component {
                 </p>
                 <span>by: {author}</span>
                 <div className="d-flex justify-between" style={{ marginTop: 10 }}>
-                    <VoteCounter score={voteScore} />
+                    <VoteCounter
+                        onUpClicked={option => this.onVoteClicked(option)}
+                        onDownClicked={option => this.onVoteClicked(option)}
+                        score={voteScore} />
                     <EditDeleteBtns
                         onBtnEditClicked={this.onEditClicked}
                         onBtnDeleteClicked={this.onDeleteClicked} />
