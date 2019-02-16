@@ -21,7 +21,7 @@ class Default extends Component {
         )
         const spinnerView = <div className="text-center"><Spinner /></div>
 
-        return this.props.categories.length === 0 ? spinnerView : defaultView
+        return this.props.categories && this.props.categories.length !== 0 ? defaultView : spinnerView
     }
 }
 const mapToProps = ({ category: { categories, selectedCategory }, post: { posts } }) => ({ categories, selectedCategory, posts })
